@@ -85,7 +85,7 @@
 2. 조인 (site / 장비 / 조치)
 3. 증상그룹별 원인 추론
 4. 자재·주의사항 매핑
-5. 분류·점수 → `briefing.json` → md 카드 + `briefing.html`
+5. 분류·점수 → `briefing.json` → md 카드 + `app.json`(FE용)
 
 ### 4.2 오늘 알람 요약 (기지국 단위)
 
@@ -200,14 +200,16 @@
 - `output/cards/index.md`: 분류순(🔴→🟡→🟢) → 점수 내림차순 정렬 목록
 - 섹션 순서: 헤더 → 오늘 알람 → 대표 증상(이력·원인·근거) → 추가 증상 → 장비 → 자재 → 주의사항
 
-### 5.3 HTML 앱 (`briefing.html`)
+### 5.3 웹 앱 (FE React + Vite · BE FastAPI)
 
-- 단일 파일, JSON 인라인, 오프라인 실행, 외부 의존 없음
-- 배포: **로컬 파일만** (공유 링크 업로드 금지 — 담당자 연락처 포함)
-- 탭: **카드 목록** · **반복장애 순위** · **펌웨어/연식 비교** · **데이터 품질**
-- 기능: 지사/분류/등급 필터, 기지국 검색, 점수순 정렬, 카드 인쇄(A4 1장)
-- 연락처: 기본 **마스킹** (`010-****-9279`), 카드별 토글로 전체 보기, 인쇄 시 마스킹 유지
-- 모바일 폭 대응(현장 휴대폰 열람)
+- FE: `project/frontend` · BE: `project/backend/main.py` (포트 8100) · 데이터는 `/api/briefing`으로 전달
+- 화면(왼쪽 메뉴): **카드** · **반복순위** · **장비비교** · **데이터품질** · **BE 연결**
+- BE 연결: 주소 입력 → 연결 테스트(`/api/health`) → 성공 시 브라우저에 저장, 재계산 버튼(`/api/build`)
+- 원본 읽기 실패 시 `sample_data.json`(가상 데이터)로 대체 + 화면에 "샘플 데이터" 배지
+- 외부(trycloudflare) 접속: 전체 연락처 미전송, 가린 번호만
+- 기능: 지사/분류/등급/근거 필터, 기지국 검색, 점수순 정렬, 카드 인쇄(A4 1장)
+- 연락처: 기본 **마스킹** (`010-****-0000`), 내 PC 접속 시에만 카드별 전체 보기, 인쇄 시 마스킹 유지
+- 모바일 폭 대응(현장 휴대폰 열람) · 디자인: SK ONS DESIGN.md
 - 표시 규칙: "추정"은 노란 배지 + 점선 테두리로 확정과 시각 구분
 
 ---
@@ -219,16 +221,19 @@
 ├─ docs/README.md           실습 원본 안내
 ├─ spec/SPEC.md             개발 명세
 ├─ data/                    원본·사전 데이터 (알람·site_master·장비이력·조치이력·symptom_map·material_map)
+├─ start.bat · stop.bat · tunnel.bat   실행 · 종료 · trycloudflare 터널
 └─ project/
    ├─ backend/
+   │  ├─ main.py            FastAPI (/api/health · /api/briefing · /api/build)
+   │  ├─ build.py           분석 파이프라인
    │  ├─ config.yaml        임계값·가중치·경로
-   │  ├─ build.py           파이프라인 진입점
-   │  ├─ templates/briefing.html  HTML 앱 템플릿 (데이터 주입 지점 `/*__DATA__*/`)
+   │  ├─ sample_data.json   원본 읽기 실패 시 가상 샘플
    │  └─ tests/test_build.py
-   └─ output/               briefing.json · briefing.html · cards/*.md · quality_report.md
+   ├─ frontend/             React + Vite + TS (카드 · 반복순위 · 장비비교 · 데이터품질 · BE 연결)
+   └─ output/               briefing.json · app.json · cards/*.md · quality_report.md
 ```
 
-- 실행: `cd project/backend && python build.py` (Python 3.10+, pandas, openpyxl, pyyaml)
+- 실행: `start.bat` (BE 8100 + FE 5173) · 분석만: `cd project/backend && python build.py` (Python 3.10+, pandas, openpyxl, pyyaml)
 
 ### 6.1 `config.yaml` 기본값
 

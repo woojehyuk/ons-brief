@@ -7,3 +7,8 @@ __pycache__/
 # 개인정보·사내 데이터 (공개 저장소 제외)
 06_출동전브리핑/data/
 06_출동전브리핑/project/output/
+
+# 프론트엔드 · 도구
+node_modules/
+dist/
+06_출동전브리핑/tools/

@@ -1,0 +1,317 @@
+{
+ "base_date": "2026-10-08",
+ "cards": [
+  {
+   "site_id": "SMP-0001",
+   "site": {
+    "name": "가나국사",
+    "branch": "가상지사",
+    "addr": "가상시 가상구 샘플로 1",
+    "install_type": "옥탑",
+    "install_year": 2015,
+    "high_work": true,
+    "manager": "홍길동",
+    "phone_masked": "010-****-0000"
+   },
+   "today": {
+    "count": 2,
+    "max_grade": "Critical",
+    "open": 1,
+    "open_alarms": [],
+    "grades": [
+     "Critical"
+    ],
+    "symptoms": {
+     "RU_LINK": 2
+    }
+   },
+   "today_window": {
+    "first_at": "2026-10-08 09:00:00",
+    "last_clear_at": null
+   },
+   "diagnoses": [
+    {
+     "symptom": "RU_LINK",
+     "equip_type": "RU",
+     "family": "HW",
+     "remote": false,
+     "history": {
+      "same_symptom": 3,
+      "last_90d": 1,
+      "recur_y": 1
+     },
+     "cause": {
+      "text": "광커넥터 오염",
+      "level": "L1",
+      "n": 3,
+      "total": 3,
+      "ratio": 1.0,
+      "label": "확정근거"
+     },
+     "evidence": [
+      {
+       "src": "조치이력.xlsx",
+       "row": 10,
+       "date": "2026-03-10",
+       "symptom": "RU_LINK",
+       "cause": "광커넥터 오염",
+       "action": "부품 교체",
+       "recur": "Y",
+       "worker": "홍길동"
+      },
+      {
+       "src": "조치이력.xlsx",
+       "row": 11,
+       "date": "2026-04-11",
+       "symptom": "RU_LINK",
+       "cause": "광커넥터 오염",
+       "action": "부품 교체",
+       "recur": "N",
+       "worker": "홍길동"
+      },
+      {
+       "src": "조치이력.xlsx",
+       "row": 12,
+       "date": "2026-05-12",
+       "symptom": "RU_LINK",
+       "cause": "광커넥터 오염",
+       "action": "부품 교체",
+       "recur": "N",
+       "worker": "홍길동"
+      }
+     ],
+     "signals": [
+      "📈 고장多(4회)"
+     ],
+     "primary": true,
+     "materials": [
+      "광 클리너",
+      "SFP 예비품"
+     ],
+     "materials_estimated": false
+    }
+   ],
+   "equipment": {
+    "matched": [
+     {
+      "type": "RU",
+      "vendor": "가상전자",
+      "model": "RU-0001",
+      "fw": "v1.0.0",
+      "installed": "2015-03-01",
+      "replaced": null,
+      "faults": 4,
+      "note": ""
+     }
+    ],
+    "reference_only": []
+   },
+   "cautions": [
+    "⚠️ 고소작업: 안전벨트·안전모, 2인 1조, 기상 확인"
+   ],
+   "category": "",
+   "category_key": "r",
+   "category_reason": "미해제 Critical 1건",
+   "score": 30
+  },
+  {
+   "site_id": "SMP-0002",
+   "site": {
+    "name": "다라국사",
+    "branch": "가상지사",
+    "addr": "가상시 가상구 샘플로 2",
+    "install_type": "실내",
+    "install_year": 2015,
+    "high_work": false,
+    "manager": "홍길동",
+    "phone_masked": "010-****-0000"
+   },
+   "today": {
+    "count": 1,
+    "max_grade": "Major",
+    "open": 0,
+    "open_alarms": [],
+    "grades": [
+     "Major"
+    ],
+    "symptoms": {
+     "VSWR_HIGH": 1
+    }
+   },
+   "today_window": {
+    "first_at": "2026-10-08 09:00:00",
+    "last_clear_at": null
+   },
+   "diagnoses": [
+    {
+     "symptom": "VSWR_HIGH",
+     "equip_type": "RU",
+     "family": "HW",
+     "remote": false,
+     "history": {
+      "same_symptom": 0,
+      "last_90d": 0,
+      "recur_y": 0
+     },
+     "cause": {
+      "text": "점퍼케이블 수분 침투",
+      "level": "L2",
+      "n": 5,
+      "total": 12,
+      "ratio": 0.42,
+      "label": "추정 · 전국 통계"
+     },
+     "evidence": [
+      {
+       "src": "조치이력.xlsx",
+       "row": null,
+       "date": null,
+       "summary": "전국 VSWR_HIGH 12건 중 '점퍼케이블 수분 침투' 5건"
+      }
+     ],
+     "signals": [],
+     "primary": true,
+     "materials": [
+      "점퍼케이블",
+      "방수테이프"
+     ],
+     "materials_estimated": false
+    }
+   ],
+   "equipment": {
+    "matched": [],
+    "reference_only": []
+   },
+   "cautions": [],
+   "category": "",
+   "category_key": "y",
+   "category_reason": "반복 3회 이상",
+   "score": 18
+  },
+  {
+   "site_id": "SMP-0003",
+   "site": {
+    "name": "마바국사",
+    "branch": "샘플지사",
+    "addr": "가상시 가상구 샘플로 3",
+    "install_type": "실내",
+    "install_year": 2015,
+    "high_work": false,
+    "manager": "홍길동",
+    "phone_masked": "010-****-0000"
+   },
+   "today": {
+    "count": 1,
+    "max_grade": "Minor",
+    "open": 0,
+    "open_alarms": [],
+    "grades": [
+     "Minor"
+    ],
+    "symptoms": {
+     "TEMP_HIGH": 1
+    }
+   },
+   "today_window": {
+    "first_at": "2026-10-08 09:00:00",
+    "last_clear_at": null
+   },
+   "diagnoses": [
+    {
+     "symptom": "TEMP_HIGH",
+     "equip_type": "정류기",
+     "family": "POWER",
+     "remote": false,
+     "history": {
+      "same_symptom": 0,
+      "last_90d": 0,
+      "recur_y": 0
+     },
+     "cause": {
+      "text": "원인 미상",
+      "level": "L3",
+      "n": 0,
+      "total": 1,
+      "ratio": 0.0,
+      "label": "추정 · 근거 부족"
+     },
+     "evidence": [
+      {
+       "src": "조치이력.xlsx",
+       "row": null,
+       "date": null,
+       "summary": "전국 TEMP_HIGH 1건 중 '원인 미상' 0건"
+      }
+     ],
+     "signals": [],
+     "primary": true,
+     "materials": [
+      "기본 공구세트"
+     ],
+     "materials_estimated": true
+    }
+   ],
+   "equipment": {
+    "matched": [],
+    "reference_only": []
+   },
+   "cautions": [],
+   "category": "",
+   "category_key": "g",
+   "category_reason": "전부 해제 · 경미",
+   "score": 6
+  }
+ ],
+ "phones": {
+  "SMP-0001": "010-0000-0000",
+  "SMP-0002": "010-0000-0000",
+  "SMP-0003": "010-0000-0000"
+ },
+ "analysis": {
+  "ranking": [
+   {
+    "site_id": "SMP-0001",
+    "name": "가나국사",
+    "branch": "가상지사",
+    "count": 5,
+    "recur_rate": 0.4,
+    "top_cause": "광커넥터 오염",
+    "today": 2
+   }
+  ],
+  "compare": {
+   "overall_mean_faults": 1.0,
+   "firmware": [
+    {
+     "group": "가상전자 · RU-0001 · v1.0.0",
+     "n": 6,
+     "small": false,
+     "mean_faults": 1.8,
+     "today_ratio": 0.33,
+     "top_cause": "광커넥터 오염",
+     "flag": true
+    }
+   ],
+   "age": [
+    {
+     "group": "≤2015",
+     "n": 3,
+     "small": true,
+     "mean_faults": 0,
+     "today_ratio": 0,
+     "top_cause": null,
+     "flag": false
+    }
+   ]
+  }
+ },
+ "quality": {
+  "sites": 3,
+  "no_site": 0,
+  "no_equip": 2,
+  "no_hist": 1,
+  "alarm_names": 3,
+  "groups": 3
+ },
+ "mask_phone": true
+}

@@ -163,11 +163,8 @@ def test_no_unmasked_phone_in_outputs(out_dir):
         assert not PHONE_RE.search(f.read_text(encoding="utf-8")), f.name
 
 
-def test_html_has_data(out_dir, cards):
-    html = (out_dir / "briefing.html").read_text(encoding="utf-8")
-    assert "/*__DATA__*/" not in html
-    blob = html.split("const D=", 1)[1].split(";\nconst CAT", 1)[0]
-    payload = json.loads(blob.replace("<\\/", "</"))
+def test_app_json_has_data(out_dir, cards):
+    payload = json.loads((out_dir / "app.json").read_text(encoding="utf-8"))
     assert len(payload["cards"]) == len(cards)
 
 

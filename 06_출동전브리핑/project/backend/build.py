@@ -7,7 +7,7 @@
   3 infer           원인 추론 L1/L2/L3 (§4.3)
   4 materials       자재·주의사항 (§4.4)
   5 classify/score  분류·점수 (§4.5, §4.6)
-  6 render          json / md / html (§5)
+  6 render          json / md / app.json (§5)
 """
 from __future__ import annotations
 
@@ -450,7 +450,7 @@ def render_index(cards: list[dict]) -> str:
 
 
 def render(cards: list[dict], phones: dict, analysis: dict, quality: dict, cfg: dict, out: Path) -> None:
-    """briefing.json / cards/*.md / briefing.html (SPEC §5)."""
+    """briefing.json / cards/*.md / app.json(FE·BE용 전체 데이터) (SPEC §5)."""
     (out / "briefing.json").write_text(
         json.dumps(cards, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
     cards_dir = out / "cards"
@@ -462,9 +462,7 @@ def render(cards: list[dict], phones: dict, analysis: dict, quality: dict, cfg: 
 
     payload = {"base_date": str(cfg["base_date"]), "cards": cards, "phones": phones,
                "analysis": analysis, "quality": quality, "mask_phone": cfg["privacy"]["mask_phone"]}
-    blob = json.dumps(payload, ensure_ascii=False, default=str).replace("</", "<\\/")
-    tpl = (ROOT / "templates" / "briefing.html").read_text(encoding="utf-8")
-    (out / "briefing.html").write_text(tpl.replace("/*__DATA__*/null", blob), encoding="utf-8")
+    (out / "app.json").write_text(json.dumps(payload, ensure_ascii=False, default=str), encoding="utf-8")
 
 
 # ---------- main ----------
