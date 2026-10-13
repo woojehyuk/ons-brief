@@ -1,0 +1,37 @@
+# SPEC §6.1 기본값
+base_date: 2026-10-08
+paths:
+  alarm: ../../data/alarm_log_20261008.csv
+  site: ../../data/site_master.xlsx
+  equipment: ../../data/장비이력.xlsx
+  history: ../../data/조치이력.xlsx
+  symptom_map: ../../data/symptom_map.csv
+  material_map: ../../data/material_map.csv
+  out_dir: ../output
+history:
+  lookback: all
+  recent_days: 90
+inference:
+  l1_min: 1
+  l2_min: 5
+  l2_min_ratio: 0.30
+  tie_break: [recur_y, latest_date]
+signals:
+  firmware_months: 6
+  fault_count_min: 3
+  aging_years: 8
+category:
+  red_open_grades: [Critical]
+  red_open_major_families: [HW, POWER]
+  yellow_repeat_min: 3
+score:
+  grade_weight: {Critical: 4, Major: 3, Minor: 2, Warning: 1}
+  open: 5
+  history: 2
+  history_cap: 10
+  recur: 3
+compare:
+  min_group: 5
+  ratio_flag: 1.5
+privacy:
+  mask_phone: true
